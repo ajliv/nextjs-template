@@ -1,0 +1,33 @@
+version: '3.7'
+
+volumes:
+  yarn:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    env_file: .env
+    environment:
+      LOG_FORMAT: dev
+      NODE_ENV: development
+      ON_DEMAND_ENTRIES_PORT: 8081
+      PORT: 8080
+      TS_NODE_PROJECT: tsconfig.server.json
+    ports:
+    - 8080:8080
+    - 8081:8081
+    volumes:
+    - ./.babelrc:/app/.babelrc
+    - ./lib:/app/lib
+    - ./next-env.d.ts:/app/next-env.d.ts
+    - ./next.config.js:/app/next.config.js
+    - ./package.json:/app/package.json
+    - ./pages:/app/pages
+    - ./server:/app/server
+    - ./tsconfig.base.json:/app/tsconfig.base.json
+    - ./tsconfig.json:/app/tsconfig.json
+    - ./tsconfig.server.json:/app/tsconfig.server.json
+    - ./yarn.lock:/app/yarn.lock
+    - yarn:/home/node/.cache/yarn

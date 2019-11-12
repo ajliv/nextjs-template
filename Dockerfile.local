@@ -1,0 +1,13 @@
+FROM node:10.17-alpine
+WORKDIR /app
+RUN set -ex; \
+    apk add --update alpine-sdk; \
+    touch yarn-error.log; \
+    mkdir -p -m 777 node_modules .next /home/node/.cache/yarn; \
+    chown -R node:node /app /home/node/.cache/yarn;
+
+COPY --chown=node:node Makefile .
+
+USER node
+ENTRYPOINT [ "make" ]
+CMD [ "app" ]
