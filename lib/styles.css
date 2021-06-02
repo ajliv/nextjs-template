@@ -1,0 +1,14 @@
+::selection {
+    background: red;
+    color: white;
+}
+
+html {
+    text-size-adjust: 100%;
+}
+
+body {
+    background: white;
+    color: black;
+    font-family: sans-serif;
+}
