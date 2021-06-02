@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { NextPage } from 'next';
 import React from 'react';
+
 import { Button } from '../lib/components/Button';
 
 const Root = styled.main`
